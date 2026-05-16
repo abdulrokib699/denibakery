@@ -2,21 +2,58 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "images/uploads"
+media_folder: "static/images/uploads"
 public_folder: "/images/uploads"
 
 collections:
-  - name: "pages"
-    label: "Halaman"
+  # ========== Halaman Beranda ==========
+  - name: "homepage"
+    label: "Halaman Beranda"
     files:
-      - file: "index.html"
-        label: "Halaman Utama"
-        name: "home"
+      - name: "home"
+        label: "Konten Beranda"
+        file: "content/_index.md"
         fields:
-          - { label: "Judul Hero", name: "hero_title", widget: "string" }
-          - { label: "Subjudul Hero", name: "hero_subtitle", widget: "text" }
-      - file: "about.html"
-        label: "Halaman Tentang Kami"
-        name: "about"
-        fields:
-          - { label: "Konten", name: "body", widget: "markdown" }
+          - { label: "Hero Badge", name: "hero_badge", widget: "string" }
+          - { label: "Hero Title (HTML diizinkan)", name: "hero_title", widget: "string" }
+          - { label: "Hero Description", name: "hero_desc", widget: "text" }
+          - { label: "Tombol Menu", name: "btn_menu_label", widget: "string" }
+          - { label: "Tombol Pesan", name: "btn_order_label", widget: "string" }
+          - { label: "Statistik Produk", name: "stat_produk", widget: "string" }
+          - { label: "Statistik Tahun", name: "stat_tahun", widget: "string" }
+          - { label: "Statistik Pelanggan", name: "stat_pelanggan", widget: "string" }
+          - { label: "Tag Rating Label", name: "tag_rating_label", widget: "string" }
+          - { label: "Tag Rating Sub", name: "tag_rating_sub", widget: "string" }
+          - { label: "Tag Jam Label", name: "tag_jam_label", widget: "string" }
+          - { label: "Tag Jam Sub", name: "tag_jam_sub", widget: "string" }
+          - { label: "Footer Tagline", name: "footer_tagline", widget: "string" }
+          - { label: "Footer Copyright", name: "footer_copyright", widget: "string" }
+
+  # ========== Manajemen Produk ==========
+  - name: "produk"
+    label: "Daftar Produk"
+    label_singular: "Produk"
+    folder: "data"
+    extension: "yml"
+    format: "yml"
+    identifier_field: "id"
+    create: true
+    delete: true
+    editor:
+      preview: false
+    fields:
+      - { label: "ID (unik, tanpa spasi)", name: "id", widget: "string" }
+      - { label: "Nama Produk", name: "nama", widget: "string" }
+      - label: "Kategori"
+        name: "kategori"
+        widget: "select"
+        options:
+          - { label: "Roti", value: "roti" }
+          - { label: "Pastry", value: "pastry" }
+          - { label: "Donat", value: "donat" }
+          - { label: "Kue", value: "kue" }
+          - { label: "Snack", value: "snack" }
+      - { label: "Harga (Rp)", name: "harga", widget: "number", value_type: "int" }
+      - { label: "Deskripsi", name: "deskripsi", widget: "text" }
+      - { label: "Gambar", name: "gambar", widget: "image", required: false }
+      - { label: "Stok", name: "stok", widget: "number", default: 0, value_type: "int" }

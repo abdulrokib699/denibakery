@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Kami | Deni Bakery</title>
+  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+  <style>
+    .menu-header { text-align: center; margin: 2rem 0 1rem; }
+    .filter-bar { display: flex; gap: 0.8rem; justify-content: center; margin-bottom: 2rem; flex-wrap: wrap; }
+    .filter-btn { background: #f5e6d3; border: none; padding: 0.5rem 1.2rem; border-radius: 30px; cursor: pointer; font-weight: 600; color: #5c3b1f; transition: 0.2s; }
+    .filter-btn.active, .filter-btn:hover { background: #d4a373; color: white; }
+    .search-box { padding: 0.5rem 1rem; border-radius: 30px; border: 1px solid #ddd; width: 250px; }
+    .produk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 2rem; padding: 1rem; }
+    .produk-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.2s; }
+    .produk-card:hover { transform: translateY(-5px); }
+    .produk-img { height: 180px; background: #f9e4c8; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+    .produk-info { padding: 1rem; }
+    .produk-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 0.3rem; }
+    .produk-kategori { font-size: 0.8rem; color: #a17c5b; margin-bottom: 0.5rem; text-transform: capitalize; }
+    .produk-harga { font-weight: bold; color: #b45f2b; margin-bottom: 0.8rem; }
+    .btn-add { background: #5c3b1f; color: white; border: none; padding: 0.5rem 1rem; border-radius: 30px; cursor: pointer; width: 100%; font-weight: bold; }
+    .btn-add:hover { background: #8b5a2b; }
+    .cart-icon { position: fixed; bottom: 20px; right: 20px; background: #5c3b1f; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.8rem; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 1000; }
+    .cart-count { position: absolute; top: -5px; right: -5px; background: red; color: white; border-radius: 50%; width: 22px; height: 22px; font-size: 0.7rem; display: flex; align-items: center; justify-content: center; }
+    .cart-sidebar { position: fixed; top: 0; right: -400px; width: 380px; height: 100%; background: white; box-shadow: -2px 0 12px rgba(0,0,0,0.2); z-index: 1001; transition: right 0.3s; padding: 1rem; display: flex; flex-direction: column; }
+    .cart-sidebar.open { right: 0; }
+    .cart-header { display: flex; justify-content: space-between; border-bottom: 1px solid #ddd; padding-bottom: 0.5rem; }
+    .cart-items { flex: 1; overflow-y: auto; margin: 1rem 0; }
+    .cart-item { display: flex; justify-content: space-between; margin-bottom: 0.8rem; border-bottom: 1px solid #eee; padding-bottom: 0.5rem; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+    .cart-total { font-weight: bold; border-top: 2px solid #ddd; padding-top: 0.8rem; text-align: right; }
+    .btn-checkout { background: #25D366; color: white; border: none; padding: 0.8rem; border-radius: 30px; font-weight: bold; margin-top: 1rem; cursor: pointer; }
+    .close-cart { background: none; border: none; font-size: 1.8rem; cursor: pointer; }
+    @media (max-width: 600px) { .cart-sidebar { width: 100%; right: -100%; } }
+  </style>
+</head>
+<body>
+
+{{ partial "navbar.html" . }}
+
+<main>
+  <div class="menu-header">
+    <h1>Menu Kami</h1>
+    <p>Pilih produk favorit Anda, lalu pesan melalui WhatsApp</p>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-kategori="semua">Semua</button>
+    <button class="filter-btn" data-kategori="roti">Roti</button>
+    <button class="filter-btn" data-kategori="pastry">Pastry</button>
+    <button class="filter-btn" data-kategori="donat">Donat</button>
+    <button class="filter-btn" data-kategori="kue">Kue</button>
+    <button class="filter-btn" data-kategori="snack">Snack</button>
+    <input type="text" id="searchInput" class="search-box" placeholder="Cari produk...">
+  </div>
+
+  <div id="produkContainer" class="produk-grid"></div>
+</main>
+
+{{ partial "footer.html" . }}
+
+<div class="cart-icon" id="cartIcon">
+  🛒
+  <span id="cartCount" class="cart-count">0</span>
+</div>
+
+<div id="cartSidebar" class="cart-sidebar">
+  <div class="cart-header">
+    <h3>Keranjang Belanja</h3>
+    <button class="close-cart" id="closeCartBtn">&times;</button>
+  </div>
+  <div id="cartItems" class="cart-items"></div>
+  <div id="cartTotal" class="cart-total">Total: Rp 0</div>
+  <button id="checkoutBtn" class="btn-checkout">✅ Pesan via WhatsApp</button>
+</div>
+
+<script>
+  const products = [
+    {{ range $.Site.Data.products }}
+    {
+      id: "{{ .id }}",
+      nama: "{{ .nama }}",
+      kategori: "{{ .kategori }}",
+      harga: {{ .harga }},
+      deskripsi: "{{ .deskripsi | safeJS }}"
+    },
+    {{ end }}
+  ];
+</script>
+<script src="{{ "js/cart.js" | relURL }}"></script>
+<script src="{{ "js/filter.js" | relURL }}"></script>
+</body>
+</html>

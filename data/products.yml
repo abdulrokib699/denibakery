@@ -1,0 +1,47 @@
+- id: "roti-gandum"
+  nama: "Roti Gandum"
+  kategori: "roti"
+  harga: 10000
+  deskripsi: "Roti gandum utuh dengan serat tinggi, cocok untuk sarapan sehat."
+  gambar: "/images/uploads/roti-gandum.jpg"
+  stok: 20
+
+- id: "croissant"
+  nama: "Croissant"
+  kategori: "pastry"
+  harga: 15000
+  deskripsi: "Croissant Prancis asli dengan lapisan mentega yang renyah."
+  gambar: "/images/uploads/croissant.jpg"
+  stok: 15
+
+- id: "donat"
+  nama: "Donat"
+  kategori: "donat"
+  harga: 8000
+  deskripsi: "Donat lembut dengan taburan gula halus."
+  gambar: "/images/uploads/donat.jpg"
+  stok: 30
+
+- id: "kue-tart"
+  nama: "Kue Tart"
+  kategori: "kue"
+  harga: 200000
+  deskripsi: "Kue tart spesial untuk ulang tahun dan acara istimewa."
+  gambar: "/images/uploads/kue-tart.jpg"
+  stok: 5
+
+- id: "roti-tawar"
+  nama: "Roti Tawar"
+  kategori: "roti"
+  harga: 12000
+  deskripsi: "Roti tawar putih lembut, cocok untuk sarapan atau bekal."
+  gambar: "/images/uploads/roti-tawar.jpg"
+  stok: 25
+
+- id: "pretzel"
+  nama: "Pretzel"
+  kategori: "snack"
+  harga: 9000
+  deskripsi: "Pretzel gurih dengan taburan garam kasar."
+  gambar: "/images/uploads/pretzel.jpg"
+  stok: 10
