@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Beranda — Deni Bakery</title>
+  <title>{{ .page_title | default "Beranda — Deni Bakery" }}</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -42,30 +42,28 @@
     <div class="hero-inner">
 
       <div class="hero-content">
-        <div class="hero-badge">🌟 &nbsp;Terpercaya Sejak 2010</div>
+        <div class="hero-badge">{{ .hero_badge | default "🌟 &nbsp;Terpercaya Sejak 2010" }}</div>
         <h1 class="hero-title">
-          Roti Segar,<br />
-          <em>Dibuat dengan Cinta</em>
+          {{ .hero_title | default "Roti Segar,<br /><em>Dibuat dengan Cinta</em>" }}
         </h1>
         <p class="hero-desc">
-          Kami menghadirkan aneka roti, kue, dan pastri lezat yang dibuat setiap hari
-          dari bahan-bahan pilihan terbaik — langsung dari dapur kami ke meja Anda.
+          {{ .hero_desc | default "Kami menghadirkan aneka roti, kue, dan pastri lezat yang dibuat setiap hari dari bahan-bahan pilihan terbaik — langsung dari dapur kami ke meja Anda." }}
         </p>
         <div class="hero-btns">
-          <a href="menu.html"   class="btn-primary">Lihat Menu</a>
-          <a href="kontak.html" class="btn-outline" >Pesan Sekarang</a>
+          <a href="menu.html"   class="btn-primary">{{ .btn_menu_label | default "Lihat Menu" }}</a>
+          <a href="kontak.html" class="btn-outline" >{{ .btn_order_label | default "Pesan Sekarang" }}</a>
         </div>
         <div class="hero-stats">
           <div class="stat-item">
-            <div class="stat-num">50+</div>
+            <div class="stat-num">{{ .stat_produk | default "50+" }}</div>
             <div class="stat-label">Varian Produk</div>
           </div>
           <div class="stat-item">
-            <div class="stat-num">14+</div>
+            <div class="stat-num">{{ .stat_tahun | default "14+" }}</div>
             <div class="stat-label">Tahun Berpengalaman</div>
           </div>
           <div class="stat-item">
-            <div class="stat-num">5rb+</div>
+            <div class="stat-num">{{ .stat_pelanggan | default "5rb+" }}</div>
             <div class="stat-label">Pelanggan Setia</div>
           </div>
         </div>
@@ -76,15 +74,15 @@
         <div class="hero-tag t1">
           <span class="tag-icon">⭐</span>
           <div>
-            <div style="font-weight:600;color:var(--brown-dark);font-size:.82rem">Rating 1000</div>
-            <div style="font-size:.72rem;color:var(--text-muted)">Pendapat Rokib</div>
+            <div style="font-weight:600;color:var(--brown-dark);font-size:.82rem">{{ .tag_rating_label | default "Rating 1000" }}</div>
+            <div style="font-size:.72rem;color:var(--text-muted)">{{ .tag_rating_sub | default "Pendapat Rokib" }}</div>
           </div>
         </div>
         <div class="hero-tag t2">
           <span class="tag-icon">🕐</span>
           <div>
-            <div style="font-weight:600;color:var(--brown-dark);font-size:.82rem">Buka Setiap Hari</div>
-            <div style="font-size:.72rem;color:var(--text-muted)">05.00 – 20.00 WIB</div>
+            <div style="font-weight:600;color:var(--brown-dark);font-size:.82rem">{{ .tag_jam_label | default "Buka Setiap Hari" }}</div>
+            <div style="font-size:.72rem;color:var(--text-muted)">{{ .tag_jam_sub | default "05.00 – 20.00 WIB" }}</div>
           </div>
         </div>
       </div>
@@ -96,7 +94,7 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-logo">Deni <span>Bakery</span></div>
-      <div class="footer-tagline">Roti Lezat, Dibuat dengan Cinta — Jember, Jawa Timur</div>
+      <div class="footer-tagline">{{ .footer_tagline | default "Roti Lezat, Dibuat dengan Cinta — Jember, Jawa Timur" }}</div>
       <div class="footer-links">
         <a href="index.html"  >Beranda</a>
         <a href="menu.html"   >Menu</a>
@@ -104,7 +102,7 @@
         <a href="galeri.html" >Galeri</a>
         <a href="kontak.html" >Kontak</a>
       </div>
-      <div class="footer-copy">© 2024 Deni Bakery. Semua hak dilindungi.</div>
+      <div class="footer-copy">{{ .footer_copyright | default "© 2024 Deni Bakery. Semua hak dilindungi." }}</div>
     </div>
   </footer>
 
