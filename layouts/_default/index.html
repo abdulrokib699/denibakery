@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ .Params.title | default "Beranda — Deni Bakery" }}</title>
+  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}" />
+</head>
+<body>
+
+  <!-- ══════════════ NAVBAR ══════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="{{ "" | relURL }}" class="logo">
+        <div class="logo-icon">🥐</div>
+        <span class="logo-text">Deni <span>Bakery</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="{{ "" | relURL }}" class="active">Beranda</a></li>
+        <li><a href="{{ "menu.html" | relURL }}">Menu</a></li>
+        <li><a href="{{ "tentang.html" | relURL }}">Tentang Kami</a></li>
+        <li><a href="{{ "galeri.html" | relURL }}">Galeri</a></li>
+        <li><a href="{{ "kontak.html" | relURL }}">Kontak</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Buka Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="{{ "" | relURL }}" class="active">Beranda</a>
+      <a href="{{ "menu.html" | relURL }}">Menu</a>
+      <a href="{{ "tentang.html" | relURL }}">Tentang Kami</a>
+      <a href="{{ "galeri.html" | relURL }}">Galeri</a>
+      <a href="{{ "kontak.html" | relURL }}">Kontak</a>
+    </div>
+  </nav>
+
+  <!-- ══════════════ HERO ══════════════ -->
+  <section id="beranda">
+    <div class="hero-bg-circle c1"></div>
+    <div class="hero-bg-circle c2"></div>
+    <div class="hero-inner">
+
+      <div class="hero-content">
+        <div class="hero-badge">{{ .Params.hero_badge | safeHTML }}</div>
+        <h1 class="hero-title">{{ .Params.hero_title | safeHTML }}</h1>
+        <p class="hero-desc">{{ .Params.hero_desc }}</p>
+        <div class="hero-btns">
+          <a href="{{ "menu.html" | relURL }}" class="btn-primary">{{ .Params.btn_menu_label }}</a>
+          <a href="{{ "kontak.html" | relURL }}" class="btn-outline">{{ .Params.btn_order_label }}</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-num">{{ .Params.stat_produk }}</div>
+            <div class="stat-label">Varian Produk</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">{{ .Params.stat_tahun }}</div>
+            <div class="stat-label">Tahun Berpengalaman</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">{{ .Params.stat_pelanggan }}</div>
+            <div class="stat-label">Pelanggan Setia</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-plate">🥖</div>
+        <div class="hero-tag t1">
+          <span class="tag-icon">⭐</span>
+          <div>
+            <div style="font-weight:600;color:var(--brown-dark);font-size:.82rem">{{ .Params.tag_rating_label }}</div>
+            <div style="font-size:.72rem;color:var(--text-muted)">{{ .Params.tag_rating_sub }}</div>
+          </div>
+        </div>
+        <div class="hero-tag t2">
+          <span class="tag-icon">🕐</span>
+          <div>
+            <div style="font-weight:600;color:var(--brown-dark);font-size:.82rem">{{ .Params.tag_jam_label }}</div>
+            <div style="font-size:.72rem;color:var(--text-muted)">{{ .Params.tag_jam_sub }}</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Deni <span>Bakery</span></div>
+      <div class="footer-tagline">{{ .Params.footer_tagline }}</div>
+      <div class="footer-links">
+        <a href="{{ "" | relURL }}">Beranda</a>
+        <a href="{{ "menu.html" | relURL }}">Menu</a>
+        <a href="{{ "tentang.html" | relURL }}">Tentang Kami</a>
+        <a href="{{ "galeri.html" | relURL }}">Galeri</a>
+        <a href="{{ "kontak.html" | relURL }}">Kontak</a>
+      </div>
+      <div class="footer-copy">{{ .Params.footer_copyright }}</div>
+    </div>
+  </footer>
+
+  <script src="{{ "js/main.js" | relURL }}"></script>
+</body>
+</html>
