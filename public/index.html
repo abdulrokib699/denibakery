@@ -2,107 +2,409 @@
 <html lang="id">
 <head>
 	<meta name="generator" content="Hugo 0.161.1"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Beranda</title>
-  <link rel="stylesheet" href="/css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deni Bakery - Roti Segar Dibuat dengan Cinta</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        section {
+            scroll-margin-top: 80px;
+        }
+        .nav-links a.active, .mobile-menu a.active {
+            color: #d4a373 !important;
+            font-weight: bold;
+            border-bottom: 2px solid #d4a373;
+        }
+        .filter-bar {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: #f5e6d3;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #5c3b1f;
+            transition: 0.2s;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: #d4a373;
+            color: white;
+        }
+        .search-box {
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            border: 1px solid #ddd;
+            width: 250px;
+        }
+        .produk-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+        .produk-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .produk-card:hover {
+            transform: translateY(-5px);
+        }
+        .produk-img {
+            height: 180px;
+            background: #f9e4c8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        .produk-info {
+            padding: 1rem;
+        }
+        .produk-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        .produk-kategori {
+            font-size: 0.8rem;
+            color: #a17c5b;
+            margin-bottom: 0.5rem;
+            text-transform: capitalize;
+        }
+        .produk-harga {
+            font-weight: bold;
+            color: #b45f2b;
+            margin-bottom: 0.8rem;
+        }
+        .btn-add {
+            background: #5c3b1f;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+        }
+        .btn-add:hover {
+            background: #8b5a2b;
+        }
+        .cart-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #5c3b1f;
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: red;
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100%;
+            background: white;
+            box-shadow: -2px 0 12px rgba(0,0,0,0.2);
+            z-index: 1001;
+            transition: right 0.3s;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+        .cart-sidebar.open {
+            right: 0;
+        }
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 0.5rem;
+        }
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            margin: 1rem 0;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .cart-total {
+            font-weight: bold;
+            border-top: 2px solid #ddd;
+            padding-top: 0.8rem;
+            text-align: right;
+        }
+        .btn-checkout {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 1rem;
+            cursor: pointer;
+        }
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+        @media (max-width: 600px) {
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+        }
+        .page-section {
+            padding: 4rem 2rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .bg-cream {
+            background: #fef9f0;
+        }
+        .bg-white {
+            background: white;
+        }
+        .text-center {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 
-  
-  <nav id="navbar">
-    <div class="nav-inner">
-      <a href="/" class="logo">
-        <div class="logo-icon">🥐</div>
-        <span class="logo-text">Deni <span>Bakery</span></span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="/" class="active">Beranda</a></li>
-        <li><a href="/menu/">Menu</a></li>
-        <li><a href="/tentang/">Tentang Kami</a></li>
-        <li><a href="/galeri/">Galeri</a></li>
-        <li><a href="/kontak/">Kontak</a></li>
-      </ul>
-      <button class="hamburger" id="hamburger" aria-label="Buka Menu">
-        <span></span><span></span><span></span>
-      </button>
+
+<nav id="navbar" style="position: fixed; top:0; left:0; width:100%; background:white; z-index:1000; box-shadow:0 2px 10px rgba(0,0,0,0.1);">
+    <div class="nav-inner" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+        <a href="#beranda" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+            <div class="logo-icon" style="font-size: 2rem;">🥐</div>
+            <span class="logo-text" style="font-weight: bold; color: #5c3b1f;">Deni <span style="color: #d4a373;">Bakery</span></span>
+        </a>
+        <ul class="nav-links" style="display: flex; gap: 2rem; list-style: none;">
+            <li><a href="#beranda" class="nav-link" style="text-decoration: none; color: #5c3b1f;">Beranda</a></li>
+            <li><a href="#menu-section" class="nav-link" style="text-decoration: none; color: #5c3b1f;">Menu</a></li>
+            <li><a href="#tentang-section" class="nav-link" style="text-decoration: none; color: #5c3b1f;">Tentang Kami</a></li>
+            <li><a href="#galeri-section" class="nav-link" style="text-decoration: none; color: #5c3b1f;">Galeri</a></li>
+            <li><a href="#kontak-section" class="nav-link" style="text-decoration: none; color: #5c3b1f;">Kontak</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" style="display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer;">☰</button>
     </div>
-    <div class="mobile-menu" id="mobile-menu">
-      <a href="/" class="active">Beranda</a>
-      <a href="/menu/">Menu</a>
-      <a href="/tentang/">Tentang Kami</a>
-      <a href="/galeri/">Galeri</a>
-      <a href="/kontak/">Kontak</a>
+    <div class="mobile-menu" id="mobile-menu" style="display: none; flex-direction: column; background: white; padding: 1rem;">
+        <a href="#beranda" class="nav-link" style="padding: 0.5rem; text-decoration: none; color: #5c3b1f;">Beranda</a>
+        <a href="#menu-section" class="nav-link" style="padding: 0.5rem; text-decoration: none; color: #5c3b1f;">Menu</a>
+        <a href="#tentang-section" class="nav-link" style="padding: 0.5rem; text-decoration: none; color: #5c3b1f;">Tentang Kami</a>
+        <a href="#galeri-section" class="nav-link" style="padding: 0.5rem; text-decoration: none; color: #5c3b1f;">Galeri</a>
+        <a href="#kontak-section" class="nav-link" style="padding: 0.5rem; text-decoration: none; color: #5c3b1f;">Kontak</a>
     </div>
-  </nav>
+</nav>
 
-  
-  <section id="beranda">
-    <div class="hero-bg-circle c1"></div>
-    <div class="hero-bg-circle c2"></div>
-    <div class="hero-inner">
 
-      <div class="hero-content">
-        <div class="hero-badge">🌟 &nbsp;Terpercaya Sejak 2010</div>
-        <h1 class="hero-title">Roti Segar,<br /><em>Dibuat dengan Cinta</em></h1>
-        <p class="hero-desc">Kami menghadirkan aneka roti, kue, dan pastri lezat yang dibuat setiap hari dari bahan-bahan pilihan terbaik — langsung dari dapur kami ke meja Anda.</p>
-        <div class="hero-btns">
-          <a href="/menu/" class="btn-primary">Lihat Menu</a>
-          <a href="/kontak/" class="btn-outline">Pesan Sekarang</a>
+<section id="beranda" class="page-section" style="min-height: 100vh; display: flex; align-items: center; background: linear-gradient(135deg, #fef9f0 0%, #f5e6d3 100%);">
+    <div class="container">
+        <div style="text-align: center;">
+            <div style="background: #d4a373; display: inline-block; padding: 0.3rem 1rem; border-radius: 30px; color: white; margin-bottom: 1rem;">🌟 Terpercaya Sejak 2010</div>
+            <h1 style="font-size: 3rem; color: #5c3b1f;">Roti Segar,<br><em style="color: #d4a373;">Dibuat dengan Cinta</em></h1>
+            <p style="max-width: 600px; margin: 1rem auto; color: #666;">Kami menghadirkan aneka roti, kue, dan pastri lezat yang dibuat setiap hari dari bahan-bahan pilihan terbaik.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <a href="#menu-section" class="btn-primary" style="background: #5c3b1f; color: white; padding: 0.8rem 1.5rem; border-radius: 30px; text-decoration: none;">Lihat Menu</a>
+                <a href="#kontak-section" class="btn-outline" style="border: 2px solid #5c3b1f; color: #5c3b1f; padding: 0.8rem 1.5rem; border-radius: 30px; text-decoration: none;">Pesan Sekarang</a>
+            </div>
+            <div style="display: flex; justify-content: center; gap: 3rem; margin-top: 3rem;">
+                <div><strong style="font-size: 2rem;">50+</strong><br>Varian Produk</div>
+                <div><strong style="font-size: 2rem;">14+</strong><br>Tahun Berpengalaman</div>
+                <div><strong style="font-size: 2rem;">5rb+</strong><br>Pelanggan Setia</div>
+            </div>
         </div>
-        <div class="hero-stats">
-          <div class="stat-item">
-            <div class="stat-num">50&#43;</div>
-            <div class="stat-label">Varian Produk</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-num">14&#43;</div>
-            <div class="stat-label">Tahun Berpengalaman</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-num">5rb&#43;</div>
-            <div class="stat-label">Pelanggan Setia</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-visual">
-        <div class="hero-plate">🥖</div>
-        <div class="hero-tag t1">
-          <span class="tag-icon">⭐</span>
-          <div>
-            <div style="font-weight:600;color:var(--brown-dark);font-size:.82rem">Rating 1000</div>
-            <div style="font-size:.72rem;color:var(--text-muted)">Pendapat Rokib</div>
-          </div>
-        </div>
-        <div class="hero-tag t2">
-          <span class="tag-icon">🕐</span>
-          <div>
-            <div style="font-weight:600;color:var(--brown-dark);font-size:.82rem">Buka Setiap Hari</div>
-            <div style="font-size:.72rem;color:var(--text-muted)">05.00 – 20.00 WIB</div>
-          </div>
-        </div>
-      </div>
-
     </div>
-  </section>
+</section>
 
-  
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-logo">Deni <span>Bakery</span></div>
-      <div class="footer-tagline">Roti Lezat, Dibuat dengan Cinta — Jember, Jawa Timur</div>
-      <div class="footer-links">
-        <a href="/">Beranda</a>
-        <a href="/menu/">Menu</a>
-        <a href="/tentang/">Tentang Kami</a>
-        <a href="/galeri/">Galeri</a>
-        <a href="/kontak/">Kontak</a>
-      </div>
-      <div class="footer-copy">© 2024 Deni Bakery. Semua hak dilindungi.</div>
+
+<section id="menu-section" class="page-section bg-cream">
+    <div class="container">
+        <h1 class="text-center" style="color: #5c3b1f;">Menu Kami</h1>
+        <div class="filter-bar">
+            <button class="filter-btn active" data-kategori="semua">Semua</button>
+            <button class="filter-btn" data-kategori="roti">Roti</button>
+            <button class="filter-btn" data-kategori="pastry">Pastry</button>
+            <button class="filter-btn" data-kategori="donat">Donat</button>
+            <button class="filter-btn" data-kategori="kue">Kue</button>
+            <button class="filter-btn" data-kategori="snack">Snack</button>
+            <input type="text" id="searchInput" class="search-box" placeholder="Cari produk...">
+        </div>
+        <div id="produkContainer" class="produk-grid"></div>
     </div>
-  </footer>
+</section>
 
-  <script src="/js/main.js"></script>
+
+<section id="tentang-section" class="page-section bg-white">
+    <div class="container" style="max-width: 800px;">
+        <h1 class="text-center" style="color: #5c3b1f;">Tentang Kami</h1>
+        <p style="margin-top: 2rem; line-height: 1.6;">Deni Bakery berdiri sejak tahun 2010 di Jember, Jawa Timur. Kami menggunakan bahan-bahan segar pilihan dan resep turun-temurun untuk memberikan rasa terbaik.</p>
+        <p style="margin-top: 1rem; line-height: 1.6;">Kami berkomitmen untuk menyajikan roti, kue, dan pastri yang lezat serta sehat bagi pelanggan setia kami.</p>
+        <h3 style="margin-top: 2rem; color: #5c3b1f;">Visi</h3>
+        <p>Menjadi toko roti terpercaya yang selalu menghadirkan produk berkualitas tinggi dengan sentuhan cinta.</p>
+        <h3 style="margin-top: 1.5rem; color: #5c3b1f;">Misi</h3>
+        <ul>
+            <li>Menggunakan bahan-bahan alami tanpa pengawet</li>
+            <li>Mengutamakan kepuasan pelanggan</li>
+            <li>Terus berinovasi dalam menciptakan varian baru</li>
+        </ul>
+    </div>
+</section>
+
+
+<section id="galeri-section" class="page-section bg-cream">
+    <div class="container">
+        <h1 class="text-center" style="color: #5c3b1f;">Galeri</h1>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem;">
+            <div style="background: #e8d5b5; height: 150px; display: flex; align-items: center; justify-content: center; border-radius: 10px; font-size: 3rem;">🥐</div>
+            <div style="background: #e8d5b5; height: 150px; display: flex; align-items: center; justify-content: center; border-radius: 10px; font-size: 3rem;">🍞</div>
+            <div style="background: #e8d5b5; height: 150px; display: flex; align-items: center; justify-content: center; border-radius: 10px; font-size: 3rem;">🥖</div>
+            <div style="background: #e8d5b5; height: 150px; display: flex; align-items: center; justify-content: center; border-radius: 10px; font-size: 3rem;">🎂</div>
+        </div>
+    </div>
+</section>
+
+
+<section id="kontak-section" class="page-section bg-white">
+    <div class="container" style="max-width: 600px;">
+        <h1 class="text-center" style="color: #5c3b1f;">Hubungi Kami</h1>
+        <div style="margin-top: 2rem;">
+            <p><strong>📍 Alamat:</strong> Jl. Roti No. 123, Jember, Jawa Timur</p>
+            <p><strong>📞 Telepon/WA:</strong> 0812-3456-7890</p>
+            <p><strong>✉️ Email:</strong> denibakery@example.com</p>
+            <p><strong>🕐 Jam Operasional:</strong> Senin – Minggu: 05.00 – 20.00 WIB</p>
+        </div>
+        <form id="contactForm" style="margin-top: 2rem;">
+            <input type="text" name="name" placeholder="Nama Anda" required style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 5px;">
+            <input type="email" name="email" placeholder="Email" required style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 5px;">
+            <textarea name="message" rows="5" placeholder="Pesan" required style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 5px;"></textarea>
+            <button type="submit" style="background: #5c3b1f; color: white; padding: 0.8rem 1.5rem; border: none; border-radius: 5px; cursor: pointer;">Kirim Pesan</button>
+        </form>
+    </div>
+</section>
+
+
+<footer style="background: #5c3b1f; color: white; text-align: center; padding: 2rem;">
+    <div class="footer-logo" style="font-size: 1.5rem; font-weight: bold;">Deni <span style="color: #d4a373;">Bakery</span></div>
+    <div class="footer-tagline" style="margin: 0.5rem 0;">Roti Lezat, Dibuat dengan Cinta — Jember, Jawa Timur</div>
+    <div class="footer-links" style="display: flex; justify-content: center; gap: 1.5rem; margin: 1rem 0;">
+        <a href="#beranda" style="color: white; text-decoration: none;">Beranda</a>
+        <a href="#menu-section" style="color: white; text-decoration: none;">Menu</a>
+        <a href="#tentang-section" style="color: white; text-decoration: none;">Tentang Kami</a>
+        <a href="#galeri-section" style="color: white; text-decoration: none;">Galeri</a>
+        <a href="#kontak-section" style="color: white; text-decoration: none;">Kontak</a>
+    </div>
+    <div class="footer-copy">© 2025 Deni Bakery. Semua hak dilindungi.</div>
+</footer>
+
+
+<div class="cart-icon" id="cartIcon">
+    🛒
+    <span id="cartCount" class="cart-count">0</span>
+</div>
+<div id="cartSidebar" class="cart-sidebar">
+    <div class="cart-header">
+        <h3>Keranjang Belanja</h3>
+        <button class="close-cart" id="closeCartBtn">&times;</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div id="cartTotal" class="cart-total">Total: Rp 0</div>
+    <button id="checkoutBtn" class="btn-checkout">✅ Pesan via WhatsApp</button>
+</div>
+
+<script>
+    window.productsData = [
+        {"id": "roti-gandum", "nama": "Roti Gandum", "kategori": "roti", "harga": 10000, "deskripsi": "Roti gandum sehat"},
+        {"id": "croissant", "nama": "Croissant", "kategori": "pastry", "harga": 15000, "deskripsi": "Croissant renyah"},
+        {"id": "donat", "nama": "Donat", "kategori": "donat", "harga": 8000, "deskripsi": "Donat lembut"},
+        {"id": "kue-tart", "nama": "Kue Tart", "kategori": "kue", "harga": 200000, "deskripsi": "Kue tart spesial"},
+        {"id": "roti-tawar", "nama": "Roti Tawar", "kategori": "roti", "harga": 12000, "deskripsi": "Roti tawar putih"},
+        {"id": "pretzel", "nama": "Pretzel", "kategori": "snack", "harga": 9000, "deskripsi": "Pretzel gurih"}
+    ];
+</script>
+<script src="/js/cart.js"></script>
+<script src="/js/filter.js"></script>
+<script src="/js/contact-form.js"></script>
+<script>
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section[id]');
+    function updateActiveLink() {
+        let current = '';
+        const scrollPos = window.scrollY + 100;
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            const href = link.getAttribute('href').substring(1);
+            if (href === current) {
+                link.classList.add('active');
+            }
+        });
+    }
+    window.addEventListener('scroll', updateActiveLink);
+    window.addEventListener('load', updateActiveLink);
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+            if (mobileMenu.style.display === 'flex') {
+                mobileMenu.style.display = 'none';
+            } else {
+                mobileMenu.style.display = 'flex';
+            }
+        });
+    }
+</script>
 </body>
 </html>
