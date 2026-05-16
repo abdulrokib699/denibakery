@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu — Deni Bakery</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ══════════════ NAVBAR ══════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">🥐</div>
+        <span class="logo-text">Deni <span>Bakery</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html"            >Beranda</a></li>
+        <li><a href="menu.html"    class="active">Menu</a></li>
+        <li><a href="tentang.html"          >Tentang Kami</a></li>
+        <li><a href="galeri.html"           >Galeri</a></li>
+        <li><a href="kontak.html"           >Kontak</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Buka Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html"            >Beranda</a>
+      <a href="menu.html"    class="active">Menu</a>
+      <a href="tentang.html"          >Tentang Kami</a>
+      <a href="galeri.html"           >Galeri</a>
+      <a href="kontak.html"           >Kontak</a>
+    </div>
+  </nav>
+
+  <!-- ══════════════ MENU ══════════════ -->
+  <div id="menu-page">
+    <div class="menu-inner">
+
+      <div class="menu-header reveal">
+        <p class="section-label">Menu Kami</p>
+        <h2 class="section-title">Pilihan Lezat<br />untuk Hari Anda</h2>
+        <p class="section-desc">
+          Setiap produk kami dibuat fresh setiap hari dengan bahan berkualitas tinggi.
+          Temukan favorit Anda di sini!
+        </p>
+        <div class="menu-tabs" id="tabs">
+          <button class="tab-btn active" data-filter="all"    >Semua</button>
+          <button class="tab-btn"        data-filter="roti"   >🍞 Roti</button>
+          <button class="tab-btn"        data-filter="kue"    >🎂 Kue</button>
+          <button class="tab-btn"        data-filter="pastri" >🥐 Pastri</button>
+          <button class="tab-btn"        data-filter="minuman">☕ Minuman</button>
+        </div>
+      </div>
+
+      <!-- Grid diisi oleh menu.js -->
+      <div class="menu-grid" id="menu-grid"></div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Deni <span>Bakery</span></div>
+      <div class="footer-tagline">Roti Lezat, Dibuat dengan Cinta — Jember, Jawa Timur</div>
+      <div class="footer-links">
+        <a href="index.html"  >Beranda</a>
+        <a href="menu.html"   >Menu</a>
+        <a href="tentang.html">Tentang Kami</a>
+        <a href="galeri.html" >Galeri</a>
+        <a href="kontak.html" >Kontak</a>
+      </div>
+      <div class="footer-copy">© 2024 Deni Bakery. Semua hak dilindungi.</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/menu.js"></script>
+</body>
+</html>
