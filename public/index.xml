@@ -7,5 +7,33 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Galeri</title>
+      <link>http://localhost:1313/galeri/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/galeri/</guid>
+      <description>&lt;h1 id=&#34;galeri-produk&#34;&gt;Galeri Produk&lt;/h1&gt;&#xA;&lt;p&gt;Berikut adalah beberapa foto produk unggulan kami:&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;(Anda bisa menambahkan galeri foto di sini. CMS Decap CMS mendukung upload gambar langsung.)&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Tips menambahkan gambar melalui CMS:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Login ke &lt;code&gt;/admin/&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;Buka koleksi &amp;ldquo;Halaman Galeri&amp;rdquo;&lt;/li&gt;&#xA;&lt;li&gt;Gunakan widget &lt;code&gt;image&lt;/code&gt; atau upload gambar ke folder &lt;code&gt;static/images/uploads&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Untuk saat ini, Anda bisa menghubungi kami langsung untuk melihat koleksi lengkap produk.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Kontak Kami</title>
+      <link>http://localhost:1313/kontak/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kontak/</guid>
+      <description>&lt;h1 id=&#34;hubungi-kami&#34;&gt;Hubungi Kami&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Alamat:&lt;/strong&gt;&lt;br&gt;&#xA;Jl. Roti No. 123, Jember, Jawa Timur&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Telepon / WhatsApp:&lt;/strong&gt;&lt;br&gt;&#xA;0812-3456-7890&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Email:&lt;/strong&gt;&lt;br&gt;&#xA;&lt;a href=&#34;mailto:denibakery@example.com&#34;&gt;denibakery@example.com&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Jam Operasional:&lt;/strong&gt;&lt;br&gt;&#xA;Senin – Minggu: 05.00 – 20.00 WIB&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;kirim-pesan&#34;&gt;Kirim Pesan&lt;/h3&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;!-- raw HTML omitted --&gt;</description>
+    </item>
+    <item>
+      <title>Menu Kami</title>
+      <link>http://localhost:1313/menu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/menu/</guid>
+      <description>&lt;h1 id=&#34;menu-deni-bakery&#34;&gt;Menu Deni Bakery&lt;/h1&gt;&#xA;&lt;p&gt;Berikut adalah pilihan menu kami:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;🥖 &lt;strong&gt;Roti Gandum&lt;/strong&gt; – Rp 10.000&lt;/li&gt;&#xA;&lt;li&gt;🥐 &lt;strong&gt;Croissant&lt;/strong&gt; – Rp 15.000&lt;/li&gt;&#xA;&lt;li&gt;🍩 &lt;strong&gt;Donat&lt;/strong&gt; – Rp 8.000&lt;/li&gt;&#xA;&lt;li&gt;🎂 &lt;strong&gt;Kue Tart&lt;/strong&gt; – Rp 200.000&lt;/li&gt;&#xA;&lt;li&gt;🍞 &lt;strong&gt;Roti Tawar&lt;/strong&gt; – Rp 12.000&lt;/li&gt;&#xA;&lt;li&gt;🥨 &lt;strong&gt;Pretzel&lt;/strong&gt; – Rp 9.000&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Hubungi kami untuk pemesanan dalam jumlah besar atau kue ulang tahun custom.&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
+    </item>
+    <item>
+      <title>Tentang Kami</title>
+      <link>http://localhost:1313/tentang/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tentang/</guid>
+      <description>&lt;h1 id=&#34;tentang-deni-bakery&#34;&gt;Tentang Deni Bakery&lt;/h1&gt;&#xA;&lt;p&gt;Deni Bakery berdiri sejak tahun 2010 di Jember, Jawa Timur. Kami menggunakan bahan-bahan segar pilihan dan resep turun-temurun untuk memberikan rasa terbaik.&lt;/p&gt;&#xA;&lt;p&gt;Kami berkomitmen untuk menyajikan roti, kue, dan pastri yang lezat serta sehat bagi pelanggan setia kami.&lt;/p&gt;&#xA;&lt;h2 id=&#34;visi&#34;&gt;Visi&lt;/h2&gt;&#xA;&lt;p&gt;Menjadi toko roti terpercaya yang selalu menghadirkan produk berkualitas tinggi dengan sentuhan cinta.&lt;/p&gt;&#xA;&lt;h2 id=&#34;misi&#34;&gt;Misi&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Menggunakan bahan-bahan alami tanpa pengawet&lt;/li&gt;&#xA;&lt;li&gt;Mengutamakan kepuasan pelanggan&lt;/li&gt;&#xA;&lt;li&gt;Terus berinovasi dalam menciptakan varian baru&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
   </channel>
 </rss>

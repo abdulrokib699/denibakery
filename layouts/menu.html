@@ -75,14 +75,15 @@
 </div>
 
 <script>
-  const products = [
+  // Produk data dari Hugo
+  window.productsData = [
     {{ range $.Site.Data.products }}
     {
       id: "{{ .id }}",
-      nama: "{{ .nama }}",
-      kategori: "{{ .kategori }}",
+      nama: {{ .nama | jsonify }},
+      kategori: {{ .kategori | jsonify }},
       harga: {{ .harga }},
-      deskripsi: "{{ .deskripsi | safeJS }}"
+      deskripsi: {{ .deskripsi | jsonify }}
     },
     {{ end }}
   ];
